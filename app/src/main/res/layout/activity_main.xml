@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/request_activity_updates_button"
+        android:id="@+id/requestActivityUpdatesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -18,7 +18,7 @@
         android:text="@string/request_activity_updates" />
 
     <Button
-        android:id="@+id/remove_activity_updates_button"
+        android:id="@+id/removeActivityUpdatesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -29,7 +29,7 @@
         android:id="@+id/detectedActivities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/request_activity_updates_button"
-        android:text="@string/detected_activities_title" />
+        android:layout_below="@+id/requestActivityUpdatesButton"
+        android:text="@string/detected_activities_title"/>
 
 </RelativeLayout>

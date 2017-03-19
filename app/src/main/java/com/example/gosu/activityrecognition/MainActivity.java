@@ -1,6 +1,8 @@
 package com.example.gosu.activityrecognition;
 
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -17,11 +21,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleApiClient mGoogleApiClient;
+    private TextView detectedActivities;
+    private Button requestActivityUpdatesButton;
+    private Button removeActivityUpdatesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        detectedActivities = (TextView) findViewById(R.id.detectedActivities);
+        requestActivityUpdatesButton = (Button) findViewById(R.id.requestActivityUpdatesButton);
+        removeActivityUpdatesButton = (Button) findViewById(R.id.removeActivityUpdatesButton);
         buildGoogleApiClient();
     }
 
@@ -84,4 +94,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void requestActivityUpdatesButtonHandler(View view) {
     }
 
+    static class ActivityDetectionBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    }
 }
