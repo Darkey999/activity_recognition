@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private ActivityDetectionBroadcastReceiver mBroadcastReceiver;
     private GoogleApiClient mGoogleApiClient;
     private TextView detectedActivitiesTxt;
-    Button requestActivityUpdatesButton;
-    Button removeActivityUpdatesButton;
-    long updateTime = 3000;
+    private Button requestActivityUpdatesButton;
+    private Button removeActivityUpdatesButton;
+    private final long UPDATE_TIME = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,13 +127,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         // Request update every 3 seconds
         ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(mGoogleApiClient,
-                updateTime, createPendingIntent()).setResultCallback(this);
+                UPDATE_TIME, createPendingIntent()).setResultCallback(this);
 
         // Handle Buttons behaviour
         requestActivityUpdatesButton.setEnabled(false);
         removeActivityUpdatesButton.setEnabled(true);
     }
 
+    // Create PendingIntent
     public PendingIntent createPendingIntent() {
         // Create new Intent to DetectedActivitiesIntentService
         Intent intent = new Intent(this, DetectedActivitiesIntentService.class);
@@ -152,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         }
     }
 
+
     // Receive the broadcast
     public class ActivityDetectionBroadcastReceiver extends BroadcastReceiver {
 
@@ -159,12 +162,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         public void onReceive(Context context, Intent intent) {
             ArrayList<DetectedActivity> detectedActivities = intent.getParcelableArrayListExtra
                     (Constants.ACTIVITY_EXTRA);
-            //StringBuilder strStatus = new StringBuilder();
             String strStatus = "";
             // Get activity type and confidence, then add to StringBuilder
             for (DetectedActivity detectedActivity : detectedActivities) {
-                //strStatus.append(getActivityString(detectedActivity.getType())).append(" ");
-                //strStatus.append(detectedActivity.getConfidence()).append("%\n");
                 strStatus += getActivityString(detectedActivity.getType()) + " " +
                         detectedActivity.getConfidence() + "%\n";
             }

@@ -22,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:onClick="removeActivityUpdatesButtonHandler"
         android:enabled="false"
+        android:onClick="removeActivityUpdatesButtonHandler"
         android:text="@string/remove_activity_updates" />
 
     <TextView
@@ -31,6 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/requestActivityUpdatesButton"
-        android:text="@string/detected_activities_title"/>
+        android:text="@string/detected_activities_title" />
 
 </RelativeLayout>
