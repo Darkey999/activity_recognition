@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:onClick="removeActivityUpdatesButtonHandler"
+        android:enabled="false"
         android:text="@string/remove_activity_updates" />
 
     <TextView
